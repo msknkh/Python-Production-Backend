@@ -1,4 +1,4 @@
-from app import db
+from backend.manager import db
 from datetime import datetime
 
 class Article(db.Model):
@@ -22,7 +22,7 @@ class Article(db.Model):
     def __repr__(self):
         return '<slug {}>'.format(self.slug)
 
-
+# TODO: Add serialize method
 
 # {
 #   "article": {

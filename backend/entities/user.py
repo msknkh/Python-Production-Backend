@@ -1,4 +1,4 @@
-from app import db
+from backend.manager import db
 
 class User(db.Model):
     __tablename__ = 'user'
@@ -8,14 +8,18 @@ class User(db.Model):
     bio = db.Column(db.String, nullable = True)
     image = db.Column(db.String, nullable = True)
 
-    def __init__(self, email, username, bio, image):
+    def __init__(self, email, username):
         self.email = email
         self.username = username
-        self.bio = bio 
-        self.image = image
     
     def __repr__(self):
         return '<username {}>'.format(self.username)
+    
+    def serialize(self):
+        return {"email": self.email,
+                "username": self.username,
+                "bio": self.bio,
+                "image": self.image}
 
 # {
 #   "user": {
