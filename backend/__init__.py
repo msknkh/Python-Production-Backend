@@ -1,7 +1,7 @@
 import os
 from flask import Flask
 from backend.routes.users import users
-from backend.manager import db, migrate
+from backend.manager import db, migrate, bcrypt, jwt
 
 def create_app():
     # create and configure the app
@@ -17,8 +17,10 @@ def create_app():
     except OSError:
         pass
 
-    # initializing the db
+    # initializing the db and the various extensions
     db.init_app(app)
     migrate.init_app(app, db)
+    bcrypt.init_app(app)
+    jwt.init_app(app)
 
     return app
