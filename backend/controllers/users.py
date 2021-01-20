@@ -1,7 +1,6 @@
 from backend.entities.user import User
-from flask import jsonify
 from backend.manager import db
-from flask_jwt_extended import create_access_token, jwt_optional, jwt_required, current_user
+from flask_jwt_extended import create_access_token
 
 def createUser(data):
     try :
@@ -11,7 +10,7 @@ def createUser(data):
             user.image = data['image']
         if "bio" in data: 
             user.bio = data['bio']
-        print(user)
+    
         user.token = create_access_token(identity=user.username)
         db.session.add(user)
         db.session.commit()

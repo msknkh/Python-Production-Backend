@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from backend.controllers.users import createUser, loginUser, getUserByUsername, updateUser
-from flask_jwt_extended import jwt_optional, jwt_required, get_jwt_identity, verify_jwt_in_request
+from flask_jwt_extended import get_jwt_identity, verify_jwt_in_request
 
 users = Blueprint('users', __name__)
 

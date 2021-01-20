@@ -1,14 +1,16 @@
 from backend.manager import db, bcrypt
 
 class User(db.Model):
-    __tablename__ = 'user'
+    __tablename__ = 'users'
 
     email = db.Column(db.String, primary_key = True)
     username = db.Column(db.String(25), unique = True, nullable = False)
     password = db.Column(db.Binary(128), nullable = False)
     bio = db.Column(db.String, nullable = True)
     image = db.Column(db.String, nullable = True)
+    #articles = db.relationship("Article", backref=db.backref('articles'))
     token: str = ''
+
 
     def __init__(self, email, username, password):
         self.email = email

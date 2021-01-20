@@ -1,7 +1,9 @@
 import os
 from flask import Flask
 from backend.routes.users import users
+from backend.routes.articles import articles
 from backend.manager import db, migrate, bcrypt, jwt
+from backend.entities import article, user
 
 def create_app():
     # create and configure the app
@@ -10,6 +12,7 @@ def create_app():
 
     # registering the blueprints
     app.register_blueprint(users)
+    app.register_blueprint(articles)
 
     #ensure the instance folder exists
     try:
